@@ -17,25 +17,29 @@ public class Network {
 	}
 
 	public boolean registerNewPhone(Phone phone) {
-		boolean result = false;
-
-		if (phones.size() < limitNumPhones) {
-			if (phone.getSimNumber() != null && !phone.getSimNumber().isEmpty()) {
-				Phone test = findPhone(phone.getSimNumber());
-				if (test == null) {
-					phones.add(phone);
-					result = true;					
-				} else {
-					System.out.println("[Network error] sim-card " + phone.getSimNumber() + " is already registered");
-				}
-			} else {
-				System.out.println("[Network error] Can't register phone without sim-card");				
-			}
-		} else {
-			System.out.println("[Network error] Limit of " + limitNumPhones + " is reached");			
+		if (phones.size() == limitNumPhones) {
+			System.out.println("[Network error] Limit of " + limitNumPhones + " is reached");
+			return false;
 		}
 
-		return result;
+		if (phone.getSimNumber() == null || phone.getSimNumber().isEmpty()) {
+			System.out.println("[Network error] Can't register phone without sim-card");
+			return false;
+		}
+
+		if (phones.contains(phone)) {
+			System.out.println("[Network error] phone " + phone + " is already registered");
+			return false;
+		}
+
+		Phone testPhone = findPhone(phone.getSimNumber());
+		if (testPhone != null) {
+			System.out.println("[Network error] sim-card " + phone.getSimNumber() + " is already registered");
+			return false;
+		}
+		phones.add(phone);
+
+		return true;
 	}
 
 	public void makeCall(Phone phone, String simNumber) {
