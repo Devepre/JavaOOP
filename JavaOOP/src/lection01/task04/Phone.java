@@ -29,18 +29,18 @@ public class Phone {
 				registeredToNetowrk.makeCall(this, simNumber);
 			} else {
 				System.out.println("Can't call from unregistered phone");
-			}			
-		}		
+			}
+		}
 	}
-	
+
 	public boolean acceptCall(Phone phone) {
 		boolean result = false;
-		
+
 		if (isOn()) {
-			System.out.println(this.getSimNumber() + " Accepting call from " + phone.getSimNumber());			
+			System.out.println(this.getSimNumber() + " Accepting call from " + phone.getSimNumber());
 			result = true;
-		}				
-		
+		}
+
 		return result;
 	}
 
@@ -71,6 +71,37 @@ public class Phone {
 	@Override
 	public String toString() {
 		return "Phone [model=" + model + ", simNumber=" + simNumber + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + ((simNumber == null) ? 0 : simNumber.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Phone other = (Phone) obj;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (simNumber == null) {
+			if (other.simNumber != null)
+				return false;
+		} else if (!simNumber.equals(other.simNumber))
+			return false;
+		return true;
 	}
 
 }
