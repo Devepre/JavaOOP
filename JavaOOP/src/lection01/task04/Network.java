@@ -28,7 +28,7 @@ public class Network {
 		}
 
 		if (phones.contains(phone)) {
-			System.out.println("[Network error] phone " + phone + " is already registered");
+			System.out.println("[Network error] " + phone + " is already registered");
 			return false;
 		}
 
