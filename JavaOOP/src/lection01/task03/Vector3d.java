@@ -33,16 +33,15 @@ public class Vector3d {
 		return vectorSum;
 	}
 
-	public static double scalarMultiply(Vector3d... vectors) {
+	public static double scalarMultiply(Vector3d vectorOne, Vector3d vectorTwo) {
 		double result = 0;
-		double multX = 1;
-		double multY = 1;
-		double multZ = 1;
-		for (Vector3d vectorCurrent : vectors) {
-			multX *= vectorCurrent.getcX();
-			multY *= vectorCurrent.getcY();
-			multZ *= vectorCurrent.getcZ();
-		}
+		double multX = vectorOne.getcX();
+		double multY = vectorOne.getcY();
+		double multZ = vectorOne.getcZ();
+
+		multX *= vectorTwo.getcX();
+		multY *= vectorTwo.getcY();
+		multZ *= vectorTwo.getcZ();
 		result = multX + multY + multZ;
 
 		return result;
