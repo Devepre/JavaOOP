@@ -6,15 +6,15 @@ import java.util.Random;
 public class Cat {
 	private String name;
 	private int age;
-	private int lives = 7;
+	private int lives;
 	private String breed;
 	private String[] words;
-	private int power = 100;
-	private boolean alive = true;
+	private int power;
+	private boolean alive;
 	private Random rnd;
 
 	public Cat(String name, int age, int lives, String breed, String[] words) {
-		super();
+		this();		
 		this.name = name;
 		this.age = age;
 		this.breed = breed;
@@ -23,6 +23,9 @@ public class Cat {
 
 	public Cat() {
 		super();
+		this.lives = 7;
+		this.power = 100;
+		this.alive = true;
 	}
 
 	public void hitAnotherCat(Cat enemyCat) {
