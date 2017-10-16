@@ -3,19 +3,19 @@ package lection02.task01;
 public class Point {
 	private double x;
 	private double y;
-	
+
 	public Point() {
 		super();
 		setX(0.0);
 		setY(0.0);
 	}
-	
+
 	public Point(double x, double y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
-	
+
 	public double getDistanceTo(Point point) {
 		if (point == null) {
 			return 0;
@@ -24,16 +24,31 @@ public class Point {
 		length = Math.sqrt(Math.pow(point.getX() - getX(), 2) + Math.pow(point.getY() - getY(), 2));
 		return length;
 	}
-	
+
+	protected static boolean checkPoints(Point... points) {
+		if (points == null) {
+			return false;
+		}
+		for (Point point : points) {
+			if (point == null) {
+				return false;
+			}
+		}
+		return true;
+	}
+
 	public double getX() {
 		return x;
 	}
+
 	public void setX(double x) {
 		this.x = x;
 	}
+
 	public double getY() {
 		return y;
 	}
+
 	public void setY(double y) {
 		this.y = y;
 	}
@@ -70,5 +85,5 @@ public class Point {
 			return false;
 		return true;
 	}
-	
+
 }
