@@ -44,10 +44,7 @@ public class Triangle extends Shape {
 	}
 
 	protected boolean checkNullPoints() {
-		if (Point.checkPoints(pointA, pointB, pointC)) {
-			return true;
-		}
-		return false;
+		return Point.checkPoints(pointA, pointB, pointC) ? true : false;
 	}
 
 	protected boolean checkExistance() {
