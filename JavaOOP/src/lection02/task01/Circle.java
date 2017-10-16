@@ -19,7 +19,7 @@ public class Circle extends Shape {
 	@Override
 	public double getPerimetr() {
 		double perimetr = -1;
-		if (checkPoints()) {
+		if (checkNullPoints()) {
 			perimetr = 2 * Math.PI * getRadius();
 		}
 		return perimetr;
@@ -28,7 +28,7 @@ public class Circle extends Shape {
 	@Override
 	public double getArea() {
 		double area = -1;
-		if (checkPoints()) {
+		if (checkNullPoints()) {
 			double radius = getRadius();
 			area = Math.PI * radius * radius;
 		}
@@ -37,17 +37,14 @@ public class Circle extends Shape {
 
 	protected double getRadius() {
 		double radius = 0;
-		if (checkPoints()) {
+		if (checkNullPoints()) {
 			radius = centerPoint.getDistanceTo(radiusPoint);
 		}
 		return radius;
 	}
 
-	protected boolean checkPoints() {
-		if (Point.checkPoints(centerPoint, radiusPoint)) {
-			return true;
-		}
-		return false;
+	protected boolean checkNullPoints() {
+		return Point.checkPoints(centerPoint, radiusPoint) ? true : false;
 	}
 
 	public Point getCenterPoint() {
