@@ -4,24 +4,31 @@ import java.util.Arrays;
 
 public class Board {
 	public static final int CAPACITY = 4;
-	private Shape[] storage;	
+	private Shape[] storage;
 
 	public Board() {
 		super();
 		storage = new Shape[CAPACITY];
 	}
-	
+
 	public void printBoard() {
+		System.out.println(this);
+		System.out.println("Total area of " + storage.getClass().getEnclosingClass() + " are: " + getTotalArea());
+	}
+
+	protected double getTotalArea() {
 		double totalArea = 0;
 		for (int i = 0; i < storage.length; i++) {
 			if (storage[i] != null) {
-				totalArea += storage[i].getArea();
+				double area = storage[i].getArea();
+				if (area > 0) {
+					totalArea += area;
+				}
 			}
 		}
-		System.out.println(this);
-		System.out.println("Total area of " + storage.getClass().getEnclosingClass() + " are: " + totalArea);
+		return totalArea;
 	}
-	
+
 	public boolean addShape(Shape shape) {
 		for (int i = 0; i < storage.length; i++) {
 			if (storage[i] == null) {
@@ -31,7 +38,7 @@ public class Board {
 		}
 		return false;
 	}
-	
+
 	public boolean addShape(int index, Shape shape) {
 		if (!checkIndex(index)) {
 			return false;
@@ -42,15 +49,15 @@ public class Board {
 		storage[index] = shape;
 		return true;
 	}
-	
+
 	public Shape get(int index) {
-		if (checkIndex(index)) {			
+		if (checkIndex(index)) {
 			Shape shape = storage[index];
 			return shape;
 		}
-		return null;		
+		return null;
 	}
-	
+
 	public Shape set(int index, Shape shape) {
 		if (checkIndex(index)) {
 			storage[index] = shape;
@@ -58,7 +65,7 @@ public class Board {
 		}
 		return null;
 	}
-	
+
 	public Shape remove(int index) {
 		if (checkIndex(index)) {
 			Shape shape = storage[index];
@@ -67,18 +74,18 @@ public class Board {
 		}
 		return null;
 	}
-	
+
 	private boolean checkIndex(int index) {
 		if (index >= storage.length || index < 0) {
 			return false;
 		}
 		return true;
 	}
-	
+
 	public void clear() {
 		storage = new Shape[CAPACITY];
 	}
-	
+
 	public int size() {
 		int size = 0;
 		for (int i = 0; i < storage.length; i++) {
@@ -88,11 +95,11 @@ public class Board {
 		}
 		return size;
 	}
-	
+
 	public int capacity() {
 		return CAPACITY;
 	}
-		
+
 	public Shape[] getStorage() {
 		return storage;
 	}
