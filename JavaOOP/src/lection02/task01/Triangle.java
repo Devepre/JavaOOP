@@ -7,6 +7,9 @@ public class Triangle extends Shape {
 
 	public Triangle() {
 		super();
+		pointA = new Point();
+		pointB = new Point();
+		pointC = new Point();
 	}
 
 	public Triangle(Point pA, Point pB, Point pC) {
@@ -19,20 +22,19 @@ public class Triangle extends Shape {
 	@Override
 	public double getPerimetr() {
 		double perimetr = 0;
-		perimetr = getLength(pointA, pointB) + getLength(pointB, pointC) + getLength(pointC, pointA);				
+		perimetr = pointA.getDistanceTo(pointB) + pointB.getDistanceTo(pointC) + pointC.getDistanceTo(pointA);
 		return perimetr;
-	}
-
-	private double getLength(Point pointA, Point pointB) {
-		double length = 0;
-		length = Math.sqrt(Math.pow(pointB.getX() - pointA.getX(), 2) + Math.pow(pointB.getY() - pointA.getY(), 2));
-		return length;
 	}
 
 	@Override
 	public double getArea() {
-		
-		return 0;
+		double area = 0;
+		double a = pointA.getDistanceTo(pointB);
+		double b = pointB.getDistanceTo(pointC);
+		double c = pointC.getDistanceTo(pointA);
+		double halfPerimetr = (a + b + c) / 2;
+		area = Math.sqrt(halfPerimetr * (halfPerimetr - a) * (halfPerimetr - b) * (halfPerimetr - c));
+		return area;
 	}
 
 	public Point getpA() {
