@@ -84,7 +84,7 @@ public class Rectangle extends Shape {
 
 	@Override
 	public String toString() {
-		return "Rectangle [pointA=" + pointA + ", pointB=" + pointB + ", pointC=" + pointC + ", pointD=" + pointD + "]";
+		return this.getClass().getSimpleName() + "[pointA=" + pointA + ", pointB=" + pointB + ", pointC=" + pointC + ", pointD=" + pointD + "]";
 	}
 
 }

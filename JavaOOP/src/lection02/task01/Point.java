@@ -55,7 +55,7 @@ public class Point {
 
 	@Override
 	public String toString() {
-		return "Point [x=" + x + ", y=" + y + "]";
+		return this.getClass().getSimpleName() + "[x=" + x + ", y=" + y + "]";
 	}
 
 	@Override

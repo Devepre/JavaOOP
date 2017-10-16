@@ -65,7 +65,7 @@ public class Circle extends Shape {
 
 	@Override
 	public String toString() {
-		return "Circle [centerPoint=" + centerPoint + ", radiusPoint=" + radiusPoint + "]";
+		return this.getClass().getSimpleName() + "[centerPoint=" + centerPoint + ", radiusPoint=" + radiusPoint + "]";
 	}
 
 }
