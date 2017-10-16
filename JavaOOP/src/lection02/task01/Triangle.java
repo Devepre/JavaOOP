@@ -12,11 +12,11 @@ public class Triangle extends Shape {
 		pointC = new Point();
 	}
 
-	public Triangle(Point pA, Point pB, Point pC) {
+	public Triangle(Point pointA, Point pointB, Point pointC) {
 		super();
-		this.pointA = pA;
-		this.pointB = pB;
-		this.pointC = pC;
+		this.pointA = pointA;
+		this.pointB = pointB;
+		this.pointC = pointC;
 	}
 
 	@Override
@@ -61,28 +61,28 @@ public class Triangle extends Shape {
 		return false;
 	}
 
-	public Point getpA() {
+	public Point getPointA() {
 		return pointA;
 	}
 
-	public void setpA(Point pA) {
-		this.pointA = pA;
+	public void setPointA(Point pointA) {
+		this.pointA = pointA;
 	}
 
-	public Point getpB() {
+	public Point getPointB() {
 		return pointB;
 	}
 
-	public void setpB(Point pB) {
-		this.pointB = pB;
+	public void setPointB(Point pointB) {
+		this.pointB = pointB;
 	}
 
-	public Point getpC() {
+	public Point getPointC() {
 		return pointC;
 	}
 
-	public void setpC(Point pC) {
-		this.pointC = pC;
+	public void setPointC(Point pointC) {
+		this.pointC = pointC;
 	}
 
 	@Override
