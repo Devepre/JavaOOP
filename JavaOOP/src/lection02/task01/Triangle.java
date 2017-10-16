@@ -21,20 +21,47 @@ public class Triangle extends Shape {
 
 	@Override
 	public double getPerimetr() {
-		double perimetr = 0;
-		perimetr = pointA.getDistanceTo(pointB) + pointB.getDistanceTo(pointC) + pointC.getDistanceTo(pointA);
-		return perimetr;
+		if (checkExistance()) {
+			double perimetr = 0;
+			perimetr = pointA.getDistanceTo(pointB) + pointB.getDistanceTo(pointC) + pointC.getDistanceTo(pointA);
+			return perimetr;
+		}
+		return -1;
 	}
 
 	@Override
 	public double getArea() {
-		double area = 0;
-		double a = pointA.getDistanceTo(pointB);
-		double b = pointB.getDistanceTo(pointC);
-		double c = pointC.getDistanceTo(pointA);
-		double halfPerimetr = (a + b + c) / 2;
-		area = Math.sqrt(halfPerimetr * (halfPerimetr - a) * (halfPerimetr - b) * (halfPerimetr - c));
-		return area;
+		if (checkExistance()) {
+			double area = 0;
+			double a = pointA.getDistanceTo(pointB);
+			double b = pointB.getDistanceTo(pointC);
+			double c = pointC.getDistanceTo(pointA);
+			double halfPerimetr = (a + b + c) / 2;
+			area = Math.sqrt(halfPerimetr * (halfPerimetr - a) * (halfPerimetr - b) * (halfPerimetr - c));
+			return area;
+		}
+		return -1;
+	}
+
+	protected boolean checkPoints() {
+		if (pointA == null || pointB == null || pointC == null) {
+			return false;
+		}
+		return true;
+	}
+
+	protected boolean checkExistance() {
+		if (checkPoints()) {
+			double a = pointA.getDistanceTo(pointB);
+			double b = pointB.getDistanceTo(pointC);
+			double c = pointC.getDistanceTo(pointA);
+			if (a + b <= c || a + c <= b || b + c <= a) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public Point getpA() {
