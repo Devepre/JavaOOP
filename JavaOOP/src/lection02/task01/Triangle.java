@@ -43,15 +43,15 @@ public class Triangle extends Shape {
 		return -1;
 	}
 
-	protected boolean checkPoints() {
-		if (pointA == null || pointB == null || pointC == null) {
-			return false;
+	protected boolean checkNullPoints() {
+		if (Point.checkPoints(pointA, pointB, pointC)) {
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	protected boolean checkExistance() {
-		if (checkPoints()) {
+		if (checkNullPoints()) {
 			double a = pointA.getDistanceTo(pointB);
 			double b = pointB.getDistanceTo(pointC);
 			double c = pointC.getDistanceTo(pointA);
