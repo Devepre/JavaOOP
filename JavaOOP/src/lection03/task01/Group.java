@@ -113,6 +113,11 @@ public class Group {
 		this.storage = students;
 	}
 
+	/* It's "dumb" method of sorting. Works only for Latin alphabet
+	 * Sorts only by first letter, ignoring all the other
+	 * Array of objects remains the same.
+	 * Just creates StringBuilder object which represents sorted data
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
