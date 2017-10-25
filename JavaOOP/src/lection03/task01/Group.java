@@ -121,17 +121,22 @@ public class Group {
 
 	@Override
 	public String toString() {
-		String result = sortBySurname().toString();
-		return result;
-	}
-
-	protected StringBuilder sortBySurname() {
-		Student[] sortedArray = new Student[storage.length];
 		StringBuilder sb = new StringBuilder();
 		sb.append("Group list sorted by Surname:" + System.lineSeparator());
+		
+		for (Student student : sortBySurname()) {
+			if (student != null) {
+				sb.append(student + System.lineSeparator());
+			}
+		}
 
+		return sb.toString();
+	}
+
+	protected Student[] sortBySurname() {
+		Student[] sortedArray = new Student[storage.length];
 		System.arraycopy(storage, 0, sortedArray, 0, storage.length);
-
+		
 		Arrays.sort(sortedArray, new Comparator<Student>() {
 
 			@Override
@@ -147,13 +152,7 @@ public class Group {
 
 		});
 
-		for (Student student : sortedArray) {
-			if (student != null) {
-				sb.append(student + System.lineSeparator());
-			}
-		}
-
-		return sb;
+		return sortedArray;
 	}
 
 }
