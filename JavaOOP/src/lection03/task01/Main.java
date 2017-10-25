@@ -82,7 +82,7 @@ public class Main {
 		Student st4 = new Student("Ann", "Green", new Date(), false, 32);
 		Student st5 = new Student("Maria", "Red", new Date(), false, 43);
 		Student st6 = new Student("Mark", "Purple", new Date(), true, 4);
-		Student st7 = new Student("John", "Magenta", new Date(), true, 24);
+		Student st7 = new Student("John", "Borm", new Date(), true, 24);
 		Student st8 = new Student("Jack", "Black", new Date(), true, 9);
 		try {
 			group.addStudent(st1);
@@ -93,6 +93,8 @@ public class Main {
 			group.addStudent(st6);
 			group.addStudent(st7);
 			group.addStudent(st8);
+			group.addStudent(new Student(null, null, new Date(), true, 23));
+			group.addStudent(new Student(null, null, new Date(), false, 13));
 		} catch (GroupOutOfBoundsException e) {
 			e.printStackTrace();
 		}

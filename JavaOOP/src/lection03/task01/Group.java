@@ -1,5 +1,8 @@
 package lection03.task01;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Group {
 	private static final int CAPACITY = 10;
 	private String name;
@@ -15,6 +18,9 @@ public class Group {
 	}
 
 	public boolean addStudent(Student student) throws GroupOutOfBoundsException {
+		if (student == null) {
+			return false;
+		}
 		for (int i = 0; i < storage.length; i++) {
 			Student tempStudent = storage[i];
 			if (tempStudent == null) {
@@ -113,40 +119,41 @@ public class Group {
 		this.storage = students;
 	}
 
-	/* It's "dumb" method of sorting. Works only for Latin alphabet
-	 * Sorts only by first letter, ignoring all the other
-	 * Array of objects remains the same.
-	 * Just creates StringBuilder object which represents sorted data
-	 */
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Group list sorted by Surname first letter:" + System.lineSeparator());
+		String result = sortBySurname().toString();
+		return result;
+	}
 
-		// handling strange users without surnames to show first
-		for (Student student : storage) {
-			if (student != null && (student.getSurname() == null || student.getSurname() == "")) {
+	protected StringBuilder sortBySurname() {
+		Student[] sortedArray = new Student[storage.length];
+		StringBuilder sb = new StringBuilder();
+		sb.append("Group list sorted by Surname:" + System.lineSeparator());
+
+		System.arraycopy(storage, 0, sortedArray, 0, storage.length);
+
+		Arrays.sort(sortedArray, new Comparator<Student>() {
+
+			@Override
+			public int compare(Student student1, Student student2) {
+				int res = 0;
+				if (student1 != null && student1.getSurname() != null) {
+					if (student2 != null && student2.getSurname() != null) {
+						res = student1.getSurname().compareTo(student2.getSurname());
+					}
+				}
+				return res;
+			}
+
+		});
+
+		for (Student student : sortedArray) {
+			if (student != null) {
 				sb.append(student + System.lineSeparator());
 			}
 		}
 
-		char ch = 'a';
-		for (int i = 0; i < 26; i++) { // 26 Latin letters
-			for (Student student : storage) {
-				if (student != null) {
-					if (student.getSurname() == null || student.getSurname() == "") {
-						// previous foreach already did the work
-					} else {
-						if (student.getSurname().substring(0, 1).toUpperCase()
-								.equals(String.valueOf(ch).toUpperCase())) {
-							sb.append(student + System.lineSeparator());
-						}
-					}
-				}
-			}
-			ch++;
-		}
-		return sb.toString();
+		return sb;
 	}
 
 }
