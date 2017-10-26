@@ -3,7 +3,7 @@ package lection04.task01;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -51,7 +51,7 @@ public class Group {
 			}
 		}
 
-		System.out.println("User canceled creating Student");
+		System.out.println("User has canceled creating Student");
 	}
 
 	protected String getInputString(String displayMessage, String errorMessage) {
@@ -194,6 +194,35 @@ public class Group {
 
 		return studentFound;
 	}
+	
+	public void Sort(SortCriterion criterion, boolean ascending) {
+		switch (criterion) {
+		case SURNAME:
+			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
+					: a.getSurname().compareToIgnoreCase(b.getSurname()));
+			break;
+		case NAME:
+			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
+					: a.getName().compareToIgnoreCase(b.getName()));
+			break;
+		case DATE_OF_BIRTH:
+			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
+					: a.getDateOfBirth().compareTo(b.getDateOfBirth()));
+			break;
+		case SEX:
+			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
+					: ((Boolean) a.isMale()).compareTo((Boolean) b.isMale()));
+			break;
+		case STIPEND:
+			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
+					: (int) (a.getStipend() - b.getStipend()));
+			break;
+		}
+
+		if (!ascending) {
+			Collections.reverse(Arrays.asList(storage));
+		}
+	}
 
 	public void clear() {
 		storage = new Student[CAPACITY];
@@ -208,7 +237,7 @@ public class Group {
 		}
 		return size;
 	}
-
+		
 	public int capacity() {
 		return CAPACITY;
 	}
@@ -236,37 +265,14 @@ public class Group {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Group list sorted by Surname:" + System.lineSeparator());
 
-		for (Student student : sortBySurname()) {
+		for (Student student : storage) {
 			if (student != null) {
 				sb.append(student + System.lineSeparator());
 			}
 		}
 
 		return sb.toString();
-	}
-
-	protected Student[] sortBySurname() {
-		Student[] sortedArray = new Student[storage.length];
-		System.arraycopy(storage, 0, sortedArray, 0, storage.length);
-
-		Arrays.sort(sortedArray, new Comparator<Student>() {
-
-			@Override
-			public int compare(Student student1, Student student2) {
-				int res = 0;
-				if (student1 != null && student1.getSurname() != null) {
-					if (student2 != null && student2.getSurname() != null) {
-						res = student1.getSurname().compareToIgnoreCase(student2.getSurname());
-					}
-				}
-				return res;
-			}
-
-		});
-
-		return sortedArray;
 	}
 
 }

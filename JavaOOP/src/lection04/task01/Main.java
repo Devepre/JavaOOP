@@ -12,7 +12,7 @@ public class Main {
 	public static void main(String[] args) {
 		Group group = new Group("Math17");
 
-		System.out.println("Adding new members with Surnames to sort to the group");
+		System.out.println("Adding 8 new members");
 		Student st1 = new Student("Jack", "Brown", new Date(), true, 23);
 		Student st2 = new Student("Mike", "White", new Date(), true, 23);
 		Student st3 = new Student("Bill", "Yellow", new Date(), true, 23);
@@ -30,15 +30,13 @@ public class Main {
 			group.addStudent(st6);
 			group.addStudent(st7);
 			group.addStudent(st8);
-			group.addStudent(new Student("Null", "Null", new Date(), true, 23));
 		} catch (GroupOutOfBoundsException e) {
 			e.printStackTrace();
 		}catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println(group);
-		System.out.println("Total places left: " + (group.capacity() - group.size()));
+		System.out.println(group);		
 
 		try {
 			group.addStudent();
@@ -48,8 +46,22 @@ public class Main {
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println();
+		System.out.println("Group after adding students from keyboard");
 		System.out.println(group);
 
+		System.out.println("Sorted descending by Stipend");
+		group.Sort(SortCriterion.STIPEND, false);
+		System.out.println(group);
+		
+		System.out.println("Sorted ascending by Name");
+		group.Sort(SortCriterion.NAME, true);
+		System.out.println(group);
+		
+		System.out.println("Sorted ascending by Sex");
+		group.Sort(SortCriterion.SEX, true);
+		System.out.println(group);
 	}
 
 }
