@@ -35,4 +35,12 @@ public class Student extends Human {
 		return super.toString() + " | stipend=" + stipend + "]";
 	}
 
+	public double getStipend() {
+		return stipend;
+	}
+
+	public void setStipend(double stipend) {
+		this.stipend = stipend;
+	}
+
 }
