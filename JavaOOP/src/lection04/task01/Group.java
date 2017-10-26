@@ -215,8 +215,12 @@ public class Group implements IMilitaryCommissariat {
 					: ((Boolean) a.isMale()).compareTo((Boolean) b.isMale()));
 			break;
 		case STIPEND:
-			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
-					: (int) (a.getStipend() - b.getStipend()));
+			Arrays.sort(storage, (a, b) -> {
+				if (CheckNull.checkNull(a, b) != CheckNull.NOT_NULL) {
+					return CheckNull.checkNull(a, b);
+				}
+				return a.getStipend() > b.getStipend() ? 1 : a.getStipend() < b.getStipend() ? -1 : 0;
+			});
 			break;
 		}
 
@@ -244,7 +248,7 @@ public class Group implements IMilitaryCommissariat {
 					conscripters[index++] = student;
 				}
 			}
-		}		
+		}
 		conscripters = Arrays.copyOf(conscripters, index);
 
 		return conscripters;
