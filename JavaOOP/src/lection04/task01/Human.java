@@ -76,7 +76,7 @@ public class Human {
 	@Override
 	public String toString() {
 		return "Human [name=" + name + ", surname=" + surname + ", id=" + id + ", dateOfBirth=" + dateOfBirth
-				+ ", sex=" + (male ? "man" : "woman") + "]";
+				+ ", " + (male ? "man" : "woman") + "]";
 	}
 
 	@Override
