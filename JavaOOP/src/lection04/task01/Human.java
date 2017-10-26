@@ -75,8 +75,8 @@ public class Human {
 
 	@Override
 	public String toString() {
-		return this.getClass().getSimpleName() + " [name=" + name + ", surname=" + surname + ", id=" + id
-				+ ", dateOfBirth=" + dateOfBirth + "]";
+		return "Human [name=" + name + ", surname=" + surname + ", id=" + id + ", dateOfBirth=" + dateOfBirth
+				+ ", sex=" + (male ? "man" : "woman") + "]";
 	}
 
 	@Override
