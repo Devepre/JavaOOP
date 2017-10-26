@@ -3,12 +3,13 @@ package lection04.task01;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
 
-public class Group {
+public class Group implements IMilitaryCommissariat {
 	private static final int CAPACITY = 10;
 	private String name;
 	private Student[] storage = new Student[CAPACITY];
@@ -194,7 +195,7 @@ public class Group {
 
 		return studentFound;
 	}
-	
+
 	public void Sort(SortCriterion criterion, boolean ascending) {
 		switch (criterion) {
 		case SURNAME:
@@ -224,6 +225,31 @@ public class Group {
 		}
 	}
 
+	@Override
+	public Student[] getÑonscripters() {
+		Student[] conscripters = new Student[CAPACITY];
+		int index = 0;
+
+		long ageMiliseconds = 0;
+		int years = 0;
+		Date dateNow = new Date();
+		long timeNow = dateNow.getTime();
+		Calendar calendar = Calendar.getInstance();
+		for (Student student : storage) {
+			if (student != null && student.isMale()) {
+				ageMiliseconds = timeNow - student.getDateOfBirth().getTime();
+				calendar.setTimeInMillis(ageMiliseconds);
+				years = calendar.get(Calendar.YEAR) - 1970;
+				if (years > 17 && years < 22) {
+					conscripters[index++] = student;
+				}
+			}
+		}		
+		conscripters = Arrays.copyOf(conscripters, index);
+
+		return conscripters;
+	}
+
 	public void clear() {
 		storage = new Student[CAPACITY];
 	}
@@ -237,7 +263,7 @@ public class Group {
 		}
 		return size;
 	}
-		
+
 	public int capacity() {
 		return CAPACITY;
 	}

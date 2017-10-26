@@ -62,6 +62,11 @@ public class Main {
 		System.out.println("Sorted ascending by Sex");
 		group.Sort(SortCriterion.SEX, true);
 		System.out.println(group);
+		
+		Student[] conscripters = group.get—onscripters();
+		for (Student student : conscripters) {
+			System.out.println(student);
+		}
 	}
 
 }
