@@ -13,6 +13,10 @@ public class Group {
 	private String name;
 	private Student[] storage = new Student[CAPACITY];
 
+	private enum BooleanAnswer {
+		YES, NO
+	}
+
 	public Group() {
 		super();
 	}
@@ -86,19 +90,23 @@ public class Group {
 
 	protected Boolean getInputBoolean(String displayMessage, String errorMessage) {
 		Boolean result = null;
+		BooleanAnswer[] answers = { BooleanAnswer.YES, BooleanAnswer.NO };
+
 		for (;;) {
 			try {
-				String text = JOptionPane.showInputDialog(displayMessage + " (yes/no)");
-				if (text.equals("yes")) {
+				BooleanAnswer answer = (BooleanAnswer) JOptionPane.showInputDialog(null, displayMessage, "Input",
+						JOptionPane.QUESTION_MESSAGE, null, answers, answers[0]
+
+				);
+				switch (answer) {
+				case YES:
 					result = true;
-				} else if (text.equals("no")) {
+					break;
+				case NO:
 					result = false;
-				} else {
-					throw new IllegalArgumentException();
+					break;
 				}
 				break;
-			} catch (IllegalArgumentException e) {
-				JOptionPane.showMessageDialog(null, errorMessage + " (Should be \"yes\" or \"no\")");
 			} catch (NullPointerException e) {
 				break;
 			}
