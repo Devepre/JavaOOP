@@ -63,6 +63,7 @@ public class Main {
 		group.Sort(SortCriterion.SEX, true);
 		System.out.println(group);
 		
+		System.out.println("These students need to visit Military house:");
 		Student[] conscripters = group.get—onscripters();
 		for (Student student : conscripters) {
 			System.out.println(student);
