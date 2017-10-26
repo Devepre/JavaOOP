@@ -1,5 +1,5 @@
 package lection04.task01;
 
-public interface MilitaryCommissariat {
+public interface IMilitaryCommissariat {
 	public Student[] getÑonscript();
 }
