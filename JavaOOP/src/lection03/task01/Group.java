@@ -19,7 +19,7 @@ public class Group {
 
 	public boolean addStudent(Student student) throws GroupOutOfBoundsException {
 		if (student == null) {
-			return false;
+			throw new IllegalArgumentException("Student can't be null");
 		}
 		for (int i = 0; i < storage.length; i++) {
 			Student tempStudent = storage[i];
