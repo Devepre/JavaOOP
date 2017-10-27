@@ -52,15 +52,15 @@ public class Main {
 		System.out.println(group);
 
 		System.out.println("Sorted descending by Stipend");
-		group.Sort(SortCriterion.STIPEND, false);
+		group.sort(SortCriterion.STIPEND, false);
 		System.out.println(group);
 
 		System.out.println("Sorted ascending by Name");
-		group.Sort(SortCriterion.NAME, true);
+		group.sort(SortCriterion.NAME, true);
 		System.out.println(group);
 
 		System.out.println("Sorted ascending by Sex");
-		group.Sort(SortCriterion.SEX, true);
+		group.sort(SortCriterion.SEX, true);
 		System.out.println(group);
 
 		System.out.println("These students need to visit Military house:");

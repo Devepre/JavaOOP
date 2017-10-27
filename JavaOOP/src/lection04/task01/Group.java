@@ -196,7 +196,7 @@ public class Group implements IMilitaryCommissariat {
 		return studentFound;
 	}
 
-	public void Sort(SortCriterion criterion, boolean ascending) {
+	public void sort(SortCriterion criterion, boolean ascending) {
 		switch (criterion) {
 		case SURNAME:
 			Arrays.sort(storage, (a, b) -> CheckNull.checkNull(a, b) != CheckNull.NOT_NULL ? CheckNull.checkNull(a, b)
