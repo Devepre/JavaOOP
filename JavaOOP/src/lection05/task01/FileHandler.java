@@ -53,7 +53,7 @@ public final class FileHandler {
 			throw new IllegalArgumentException("Can't copy to File instead of Directory");
 		}
 		
-		if(!original.exists() || !destination.exists()) {
+		if(!original.exists()) {
 			throw new IllegalArgumentException("Can't find Directory");
 		}
 
