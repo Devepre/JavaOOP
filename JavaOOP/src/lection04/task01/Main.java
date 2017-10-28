@@ -64,7 +64,7 @@ public class Main {
 		System.out.println(group);
 
 		System.out.println("These students need to visit Military house:");
-		Student[] conscripters = group.getÑonscripters();
+		Student[] conscripters = group.getConscripters();
 		for (Student student : conscripters) {
 			System.out.println(student);
 		}

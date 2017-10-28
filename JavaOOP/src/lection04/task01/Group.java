@@ -230,7 +230,7 @@ public class Group implements IMilitaryCommissariat {
 	}
 
 	@Override
-	public Student[] get—onscripters() {
+	public Student[] getConscripters() {
 		Student[] conscripters = new Student[CAPACITY];
 		int index = 0;
 
